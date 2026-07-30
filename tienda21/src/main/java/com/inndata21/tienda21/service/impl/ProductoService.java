@@ -1,4 +1,4 @@
-package  com.tienda.inndata021.service.implemetacion;
+package  com.inndata21.tienda21.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,11 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tienda.inndata021.dto.ProductoResponse;
-import com.tienda.inndata021.entity.detallePedido;
-import com.tienda.inndata021.entity.productos;
-import com.tienda.inndata021.repository.ProductosRespository;
-import com.tienda.inndata021.service.IProducto;
+import com.inndata21.tienda21.dto.ProductoResponse;
+import com.inndata21.tienda21.entity.DetallePedido;
+import com.inndata21.tienda21.entity.productos;
+import com.inndata21.tienda21.repository.ProductosRespository;
+import com.inndata21.tienda21.service.IProducto;
 
 @Service
 public class ProductoService implements IProducto {

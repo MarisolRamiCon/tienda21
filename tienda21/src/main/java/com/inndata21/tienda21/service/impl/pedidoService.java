@@ -1,4 +1,4 @@
-package com.tienda.inndata021.service.implemetacion;
+package com.inndata21.tienda21.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tienda.inndata021.dto.pedidoResponse;
-import com.tienda.inndata021.entity.pedido;
-import com.tienda.inndata021.repository.PedidoRepository;
-import com.tienda.inndata021.service.IPedido;
+import com.inndata21.tienda21.dto.pedidoResponse;
+import com.inndata21.tienda21.entity.pedido;
+import com.inndata21.tienda21.repository.PedidoRepository;
+import com.inndata21.tienda21.service.IPedido;
 
 
 @Service 
@@ -17,16 +17,16 @@ public class pedidoService implements IPedido{
     @Autowired
     PedidoRepository pedidoRepository;
 
-    @Override
-    public List<pedido> leerTodo(){
+    //@Override
+    //public List<pedido> leerTodo(){
         // return pedidoRepository.findAll().stream().map(pedido -> new pedidoResponse(
         //     pedido.getIdPedido(),
         //     pedido.getFecha_pedido(),
         //     pedido.getCliente_id(),
         //     pedido.getTotal_pedido()
         // )).toList();
-        return pedidoRepository.findAll();
-    }
+       // return pedidoRepository.findAll();
+    //}
 
     @Override
     public pedido readById(Integer idPedido) {
@@ -61,6 +61,12 @@ public class pedidoService implements IPedido{
         } else {
             return "Pedido no encontrado.";
         }
+    }
+
+    @Override
+    public List<pedidoResponse> leerTodo() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'leerTodo'");
     }
 
     // @Override

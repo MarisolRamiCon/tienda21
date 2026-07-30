@@ -1,8 +1,10 @@
-package com.tienda.inndata021.service;
+package com.inndata21.tienda21.service;
 
 import java.util.List;
-import com.tienda.inndata021.dto.ProductoResponse;
-import com.tienda.inndata021.entity.productos;
+
+import com.inndata21.tienda21.dto.ProductoResponse;
+import com.inndata21.tienda21.entity.productos;
+
 
 
 public interface IProducto {

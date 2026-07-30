@@ -1,8 +1,8 @@
-package com.tienda.inndata021.service;
+package com.inndata21.tienda21.service;
 
 import java.util.List;
-import com.tienda.inndata021.dto.pedidoResponse;
-import com.tienda.inndata021.entity.pedido;
+import com.inndata21.tienda21.dto.pedidoResponse;
+import com.inndata21.tienda21.entity.pedido;
 
 
 public interface IPedido {

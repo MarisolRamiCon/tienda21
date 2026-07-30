@@ -1,4 +1,4 @@
-package com.tienda.inndata021.dto;
+package com.inndata21.tienda21.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

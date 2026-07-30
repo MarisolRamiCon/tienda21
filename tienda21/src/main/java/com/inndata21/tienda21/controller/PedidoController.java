@@ -1,4 +1,4 @@
-package com.tienda.inndata021.controller;
+package com.inndata21.tienda21.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tienda.inndata021.dto.pedidoResponse;
-import com.tienda.inndata021.entity.pedido;
-import com.tienda.inndata021.service.implemetacion.pedidoService;
+//import com.inndata21.tienda21.dto.pedidoResponse;
+
+import com.inndata21.tienda21.dto.pedidoResponse;
+import com.inndata21.tienda21.entity.pedido;
+import com.inndata21.tienda21.service.impl.pedidoService;
 
 import jakarta.websocket.server.PathParam;
 
