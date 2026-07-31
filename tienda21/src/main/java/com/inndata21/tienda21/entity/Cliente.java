@@ -1,0 +1,34 @@
+package com.inndata21.tienda21.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+
+@Entity
+@Table(name = "clientes")
+public class Cliente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cliente")
+    private Integer idCliente;
+
+    @Column(name = "nombre")
+    private String nombre;
+
+    @Column(name = "apellido")
+    private String apellido;
+
+    @Column(name = "direccion")
+    private String direccion;
+
+    @Column(name = "correo")
+    private String correo;
+
+    @Column(name = "telefono")
+    private String telefono;
+}
