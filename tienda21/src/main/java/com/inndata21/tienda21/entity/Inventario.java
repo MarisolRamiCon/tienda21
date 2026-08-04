@@ -29,6 +29,9 @@ public class Inventario {
 	
 	@Column(name = "stock")
 	private Integer stock;
+	
+	@Column(name = "activo")
+    private Boolean activo = true;
 
 	public Integer getIdInventario() {
 		return idInventario;
@@ -53,5 +56,15 @@ public class Inventario {
 	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
+
+	public Boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
+	
+	
 	
 }

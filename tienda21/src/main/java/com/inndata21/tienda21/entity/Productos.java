@@ -1,13 +1,10 @@
 package com.inndata21.tienda21.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -41,6 +38,9 @@ public class Productos {
 	
 	@Column(name = "proveedor_id")
 	private Integer proveedorId;
+	
+	@Column(name = "active")
+    private Boolean active = true;
 
 	public Integer getIdProducto() {
 		return idProducto;
@@ -98,5 +98,12 @@ public class Productos {
 		this.proveedorId = proveedorId;
 	}
 	
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
 	
 }

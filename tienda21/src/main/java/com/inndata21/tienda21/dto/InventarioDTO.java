@@ -1,6 +1,5 @@
 package com.inndata21.tienda21.dto;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +9,7 @@ import lombok.NoArgsConstructor;
 public class InventarioDTO {
 	private Integer idProducto;
     private Integer stock;
+    private Boolean activo;
     
 	public Integer getIdProducto() {
 		return idProducto;
@@ -22,6 +22,12 @@ public class InventarioDTO {
 	}
 	public void setStock(Integer stock) {
 		this.stock = stock;
+	}
+	public Boolean getActivo() {
+		return activo;
+	}
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
 	}
     
     
