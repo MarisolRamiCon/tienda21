@@ -58,5 +58,27 @@ public class ProductoController {
     public List<ProductosResponse> productosBaratos(@PathParam("precio") Double precio) {
         return productoService.productosBaratos(precio);
     }
+
+    @GetMapping("/productosProveedorStock")
+    public List<ProductosResponse> productosProveedorStock(@PathParam("proveedorId") Integer proveedorId, @PathParam("stock") Integer stock) {
+        return productoService.productosProveedorStock(proveedorId, stock);
+    }
     
+    //queries
+    @GetMapping("/productosBaratosQuery")
+    public List<productos> productosBaratosQuery(@PathParam("precio") Double precio) {
+        return productoService.productosBaratosQuery(precio);
+    }
+
+    //borrado logico
+    @DeleteMapping("/producto")
+    public String deleteLogico(@RequestParam Integer idProducto) {
+        return productoService.deleteLogico(idProducto);
+    }
+
+    //borrado fisico 
+    @DeleteMapping("/productoFisico")
+    public String deleteFisico(@RequestParam Integer idProducto) {
+        return productoService.deleteFisico(idProducto);
+    }
 }

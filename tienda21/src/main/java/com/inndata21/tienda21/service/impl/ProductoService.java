@@ -73,5 +73,46 @@ public class ProductoService implements IProducto {
         ).toList();
     }
 
-       
+    @Override
+    public List<ProductosResponse> productosProveedorStock(Integer proveedorId, Integer stock) {
+        return productoRepository.findByProveedorIdIsAndStockGreaterThan(proveedorId, stock).stream().map(
+            productos -> {
+                ProductosResponse productoResponse = new ProductosResponse();
+                productoResponse.setNombreProducto(productos.getNombreProducto());
+                productoResponse.setPrecio(productos.getPrecio());
+                productoResponse.setStock(productos.getStock());
+                return productoResponse;
+            }
+        ).toList();
+    }
+
+    @Override
+    public List<productos> productosBaratosQuery(Double Precio) {
+        return productoRepository.productosBaratos(Precio);
+    }
+
+    @Override
+    public String deleteLogico(Integer idProducto) {
+        Optional<productos> productoOptional = productoRepository.findById(idProducto);
+        if (productoOptional.isPresent()) {
+            productos existingProducto = productoOptional.get();
+            existingProducto.setActive(false);
+            productoRepository.save(existingProducto);
+            return "Producto eliminado lógicamente.";
+        } else {
+            return "Producto no encontrado.";
+        }
+    }
+
+    @Override
+    public String deleteFisico(Integer idProducto) {
+        Optional<productos> productoOptional = productoRepository.findById(idProducto);
+        if (productoOptional.isPresent()) {
+            productos producto2 = productoOptional.get();
+            productoRepository.delete(producto2);
+            return "Producto eliminado físicamente.";
+        } else {
+            return "Producto no encontrado.";
+        }
+    }
 }

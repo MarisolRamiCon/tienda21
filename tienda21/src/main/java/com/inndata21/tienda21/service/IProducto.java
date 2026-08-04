@@ -14,10 +14,14 @@ public interface IProducto {
     public productos update(Integer idProducto, productos prductos);
     public String delete(Integer idProducto);
     //borrado logico
-    //public String deleteLogico(Integer idDetallePedido);
-
+    public String deleteLogico(Integer idProducto);
+    //borrado fisico
+    public String deleteFisico(Integer idProducto); 
 
     //metodos personalizados con dto
     public List<ProductosResponse> productosBaratos(Double Precio);
+    public List<ProductosResponse> productosProveedorStock(Integer proveedorId, Integer stock);
     
+    //metodo con queries
+    public List<productos> productosBaratosQuery(Double Precio);
 }
