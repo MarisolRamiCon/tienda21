@@ -18,17 +18,8 @@ public class ProductoService implements IProducto {
     ProductosRespository productoRepository;
     
     @Override
-    public List<ProductoResponse> leerTodo() {
-        return productoRepository.findAll().stream().map(productos -> 
-            new ProductoResponse(
-                productos.getIdProducto(),
-                productos.getNombreProducto(),
-                productos.getDescripcionProducto(),
-                productos.getPrecio(),
-                productos.getCategoria(),
-                productos.getProveedorId(),
-                productos.getStock()
-            )).toList();
+    public List<productos> leerTodo() {
+        return productoRepository.findAll();
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.inndata21.tienda21.dto.pedidoResponse;
+
 import com.inndata21.tienda21.entity.pedido;
 import com.inndata21.tienda21.repository.PedidoRepository;
 import com.inndata21.tienda21.service.IPedido;
@@ -64,22 +64,8 @@ public class pedidoService implements IPedido{
     }
 
     @Override
-    public List<pedidoResponse> leerTodo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'leerTodo'");
+    public List<pedido> leerTodo() {
+        return pedidoRepository.findAll();
     }
-
-    // @Override
-    //     public String deleteLogico(Integer idDetallePedido) {
-    //         Optional<detallePedido> detallePedidoOptional = detallePedidoRepository.findById(idDetallePedido);
-    //         if (detallePedidoOptional.isPresent()) {
-    //             detallePedido existingDetallePedido = detallePedidoOptional.get();
-    //             existingDetallePedido.setIsActive(false);
-    //             detallePedidoRepository.save(existingDetallePedido);
-    //             return "Detalle de pedido eliminado lógicamente.";
-    //         } else {
-    //             return "Detalle de pedido no encontrado.";
-    //         }
-    //     }
 
 }

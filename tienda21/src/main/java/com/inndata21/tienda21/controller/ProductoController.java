@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inndata21.tienda21.dto.ProductoResponse;
+
 import com.inndata21.tienda21.entity.DetallePedido;
 import com.inndata21.tienda21.entity.productos;
 import com.inndata21.tienda21.service.impl.ProductoService;
@@ -25,7 +25,7 @@ public class ProductoController {
     ProductoService productoService;
     
     @GetMapping("/Producto")
-    public List<ProductoResponse> leerTodo(){
+    public List<productos> leerTodo(){
         return productoService.leerTodo();
     }
 
