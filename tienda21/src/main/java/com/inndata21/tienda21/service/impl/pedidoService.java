@@ -64,9 +64,8 @@ public class pedidoService implements IPedido{
     }
 
     @Override
-    public List<pedidoResponse> leerTodo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'leerTodo'");
+    public List<pedido> leerTodo() {
+        return pedidoRepository.findAll();
     }
 
     // @Override

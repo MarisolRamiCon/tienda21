@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.inndata21.tienda21.dto.ProductoResponse;
+
 import com.inndata21.tienda21.entity.DetallePedido;
 import com.inndata21.tienda21.entity.productos;
 import com.inndata21.tienda21.repository.ProductosRespository;
@@ -16,19 +16,10 @@ import com.inndata21.tienda21.service.IProducto;
 public class ProductoService implements IProducto {
     @Autowired
     ProductosRespository productoRepository;
-    
-    @Override
-    public List<ProductoResponse> leerTodo() {
-        return productoRepository.findAll().stream().map(productos -> 
-            new ProductoResponse(
-                productos.getIdProducto(),
-                productos.getNombreProducto(),
-                productos.getDescripcionProducto(),
-                productos.getPrecio(),
-                productos.getCategoria(),
-                productos.getProveedorId(),
-                productos.getStock()
-            )).toList();
+
+    @Override 
+    public List<Productos> leerTodo() {
+        return productoRepository.findAll();
     }
 
     @Override

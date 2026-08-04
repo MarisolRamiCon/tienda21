@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//import com.inndata21.tienda21.dto.pedidoResponse;
 
-import com.inndata21.tienda21.dto.pedidoResponse;
 import com.inndata21.tienda21.entity.pedido;
 import com.inndata21.tienda21.service.impl.pedidoService;
 
@@ -26,7 +24,7 @@ public class PedidoController {
     pedidoService pedidoService;
     
     @GetMapping("/pedido")
-    public List<pedidoResponse> leerTodo(){
+    public List<pedido> leerTodo(){
         return pedidoService.leerTodo();
     }
 
