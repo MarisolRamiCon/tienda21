@@ -2,6 +2,7 @@ package com.inndata21.tienda21.service;
 
 import java.util.List;
 
+import com.inndata21.tienda21.dto.response.ProductosResponse;
 import com.inndata21.tienda21.entity.productos;
 
 
@@ -15,4 +16,8 @@ public interface IProducto {
     //borrado logico
     //public String deleteLogico(Integer idDetallePedido);
 
+
+    //metodos personalizados con dto
+    public List<ProductosResponse> productosBaratos(Double Precio);
+    
 }

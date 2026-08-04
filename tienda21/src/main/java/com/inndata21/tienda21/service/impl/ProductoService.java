@@ -6,8 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import com.inndata21.tienda21.entity.DetallePedido;
+import com.inndata21.tienda21.dto.response.ProductosResponse;
 import com.inndata21.tienda21.entity.productos;
 import com.inndata21.tienda21.repository.ProductosRespository;
 import com.inndata21.tienda21.service.IProducto;
@@ -59,6 +58,19 @@ public class ProductoService implements IProducto {
         } else {
             return "Detalle de pedido no encontrado.";
         }
+    }
+
+    @Override
+    public List<ProductosResponse> productosBaratos(Double precio) {
+        return productoRepository.findByPrecioLessThan(precio).stream().map(
+            productos -> {
+                ProductosResponse productoResponse = new ProductosResponse();
+                productoResponse.setNombreProducto(productos.getNombreProducto());
+                productoResponse.setPrecio(productos.getPrecio());
+                productoResponse.setStock(productos.getStock());
+                return productoResponse;
+            }
+        ).toList();
     }
 
        
