@@ -28,4 +28,6 @@ public class DetallePedido {
     @Column(name = "producto_id")
     private Integer productoId;
     
+    @Column(name = "active")
+    private Boolean active;
 }

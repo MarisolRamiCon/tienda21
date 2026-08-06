@@ -47,4 +47,29 @@ public class PedidoController {
     public String delete(@PathVariable Integer idPedido){
         return pedidoService.delete(idPedido);
     }
+
+    @DeleteMapping("/pedidoDelete")
+    public String deleteLogico(@PathParam("idPedido") Integer idPedido){
+        return pedidoService.deleteLogico(idPedido);
+    }
+    
+    @GetMapping("/pedidoPorCliente")
+    public List<pedido> pedidosPorCliente(@PathParam("clienteId") Integer clienteId) {
+        return pedidoService.pedidosPorClienteQuery(clienteId);
+    }
+
+    @GetMapping("/pedidoPorFecha")
+    public List<pedido> pedidosPorFecha(@PathParam("fecha_pedido") String fecha_pedido) {
+        return pedidoService.pedidosPorFecha(fecha_pedido);
+    }
+
+    @PostMapping("/pedidoDto")
+    public pedido createPedidoDto(@RequestBody pedido pedido) {
+        return pedidoService.create(pedido);
+    }
+
+    @GetMapping("/pedidoPorClienteQuery")
+    public List<pedido> pedidosPorClienteQuery(@PathParam("clienteId") Integer clienteId) {
+        return pedidoService.pedidosPorClienteQuery(clienteId);
+    }
 }

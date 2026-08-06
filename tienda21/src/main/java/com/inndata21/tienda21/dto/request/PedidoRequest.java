@@ -13,5 +13,6 @@ import lombok.Data;
 public class PedidoRequest {
     private Integer idPedido;
     private LocalDateTime fecha_pedido;
+    private Integer cliente_id;
     private Double total_pedido;
 }

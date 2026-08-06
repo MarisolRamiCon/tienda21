@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 
 @Entity
-@Table(name= "pedido")
+@Table(name= "pedidos")
 
 public class pedido {
 
@@ -36,4 +36,7 @@ public class pedido {
 
     @Column(name = "total_pedido")
     private Double total_pedido;
+
+    @Column(name = "active")
+    private Boolean active;
 }

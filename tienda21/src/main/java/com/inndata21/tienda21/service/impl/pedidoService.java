@@ -6,7 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.inndata21.tienda21.dto.request.PedidoRequest;
+import com.inndata21.tienda21.dto.response.PedidoResponse;
 import com.inndata21.tienda21.entity.pedido;
 import com.inndata21.tienda21.repository.PedidoRepository;
 import com.inndata21.tienda21.service.IPedido;
@@ -16,17 +17,6 @@ import com.inndata21.tienda21.service.IPedido;
 public class pedidoService implements IPedido{
     @Autowired
     PedidoRepository pedidoRepository;
-
-    //@Override
-    //public List<pedido> leerTodo(){
-        // return pedidoRepository.findAll().stream().map(pedido -> new pedidoResponse(
-        //     pedido.getIdPedido(),
-        //     pedido.getFecha_pedido(),
-        //     pedido.getCliente_id(),
-        //     pedido.getTotal_pedido()
-        // )).toList();
-       // return pedidoRepository.findAll();
-    //}
 
     @Override
     public pedido readById(Integer idPedido) {
@@ -67,18 +57,68 @@ public class pedidoService implements IPedido{
     public List<pedido> leerTodo() {
         return pedidoRepository.findAll();
     }
+    //dtos
+    @Override
+    public String deleteLogico(Integer idPedido) {
+        Optional<pedido> pedidoOptional = pedidoRepository.findById(idPedido);
+        if (pedidoOptional.isPresent()) {
+            pedido pedido = pedidoOptional.get();
+            pedido.setActive(false);
+            pedidoRepository.save(pedido);
+            return "Pedido eliminado lógicamente correctamente.";
+        } else {
+            return "Pedido no encontrado.";
+        }
+    }
 
-    // @Override
-    //     public String deleteLogico(Integer idDetallePedido) {
-    //         Optional<detallePedido> detallePedidoOptional = detallePedidoRepository.findById(idDetallePedido);
-    //         if (detallePedidoOptional.isPresent()) {
-    //             detallePedido existingDetallePedido = detallePedidoOptional.get();
-    //             existingDetallePedido.setIsActive(false);
-    //             detallePedidoRepository.save(existingDetallePedido);
-    //             return "Detalle de pedido eliminado lógicamente.";
-    //         } else {
-    //             return "Detalle de pedido no encontrado.";
-    //         }
-    //     }
+    @Override
+    public List<PedidoResponse> pedidosPorCliente(Integer clienteId) {
+        List<pedido> pedidos = pedidoRepository.findByClienteId(clienteId);
+        return pedidos.stream().map(
+            pedido -> {
+                PedidoResponse pedidoResponse = new PedidoResponse();
+                pedidoResponse.setFecha_pedido(pedido.getFecha_pedido());
+                pedidoResponse.setCliente_id(pedido.getCliente_id());
+                pedidoResponse.setTotal_pedido(pedido.getTotal_pedido());
+                return pedidoResponse;
+            }
+        ).toList();
+    }
+
+    @Override
+    public List<PedidoResponse> pedidosPorFecha(String fecha_pedido) {
+        List<pedido> pedidos = pedidoRepository.findAll(); // Aquí deberías implementar la lógica para filtrar por fecha
+        return pedidos.stream().map(
+            pedido -> {
+                PedidoResponse pedidoResponse = new PedidoResponse();
+                pedidoResponse.setFecha_pedido(pedido.getFecha_pedido());
+                pedidoResponse.setCliente_id(pedido.getCliente_id());
+                pedidoResponse.setTotal_pedido(pedido.getTotal_pedido());
+                return pedidoResponse;
+            }
+        ).toList();
+    }
+
+    @Override
+    public PedidoResponse createPedidoDto(PedidoRequest pedidoRequest) {
+        pedido pedido = new pedido();
+        pedido.setFecha_pedido(pedidoRequest.getFecha_pedido());
+        pedido.setCliente_id(pedidoRequest.getCliente_id());
+        pedido.setTotal_pedido(pedidoRequest.getTotal_pedido());
+        pedidoRepository.save(pedido);
+
+        PedidoResponse pedidoResponse = new PedidoResponse();
+        pedidoResponse.setFecha_pedido(pedido.getFecha_pedido());
+        pedidoResponse.setCliente_id(pedido.getCliente_id());
+        pedidoResponse.setTotal_pedido(pedido.getTotal_pedido());
+
+        return pedidoResponse;
+    }
+
+    @Override
+    public List<pedido> pedidosPorClienteQuery(Integer clienteId) {
+        return pedidoRepository.findPedidosActivosByClienteId(clienteId);
+    }
+
 
 }

@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.inndata21.tienda21.entity.DetallePedido;
 
 public interface DetallePedidoRepository extends JpaRepository<DetallePedido, Integer> {
-    
+
 }
