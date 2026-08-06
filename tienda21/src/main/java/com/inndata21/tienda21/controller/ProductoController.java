@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inndata21.tienda21.entity.DetallePedido;
 import com.inndata21.tienda21.entity.productos;
 import com.inndata21.tienda21.service.impl.ProductoService;
 
@@ -19,6 +18,7 @@ import jakarta.websocket.server.PathParam;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.inndata21.tienda21.dto.request.ProductosRequest;
 import com.inndata21.tienda21.dto.response.ProductosResponse;
 
 
@@ -80,5 +80,11 @@ public class ProductoController {
     @DeleteMapping("/productoFisico")
     public String deleteFisico(@RequestParam Integer idProducto) {
         return productoService.deleteFisico(idProducto);
+    }
+
+    //create con dtos
+    @PostMapping("/productoDto")
+    public ProductosResponse createProductoDto(@RequestBody ProductosRequest productoRequest) {
+        return productoService.createProductoDto(productoRequest);
     }
 }

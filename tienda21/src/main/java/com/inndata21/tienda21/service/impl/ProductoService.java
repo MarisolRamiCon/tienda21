@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inndata21.tienda21.dto.request.ProductosRequest;
 import com.inndata21.tienda21.dto.response.ProductosResponse;
 import com.inndata21.tienda21.entity.productos;
 import com.inndata21.tienda21.repository.ProductosRespository;
@@ -114,5 +115,26 @@ public class ProductoService implements IProducto {
         } else {
             return "Producto no encontrado.";
         }
+    }
+
+    //create con dtos
+    @Override
+    public ProductosResponse createProductoDto(ProductosRequest productoRequest) {
+        productos producto = new productos();
+        producto.setNombreProducto(productoRequest.getNombreProducto());
+        producto.setDescripcionProducto(productoRequest.getDescripcionProducto());
+        producto.setPrecio(productoRequest.getPrecio());
+        producto.setCategoria(productoRequest.getCategoria());
+        producto.setProveedorId(productoRequest.getProveedorId());
+        producto.setStock(productoRequest.getStock());
+
+        productos savedProducto = productoRepository.save(producto);
+
+        ProductosResponse productoResponse = new ProductosResponse();
+        productoResponse.setNombreProducto(savedProducto.getNombreProducto());
+        productoResponse.setPrecio(savedProducto.getPrecio());
+        productoResponse.setStock(savedProducto.getStock());
+
+        return productoResponse;
     }
 }

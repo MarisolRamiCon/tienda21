@@ -2,6 +2,7 @@ package com.inndata21.tienda21.service;
 
 import java.util.List;
 
+import com.inndata21.tienda21.dto.request.ProductosRequest;
 import com.inndata21.tienda21.dto.response.ProductosResponse;
 import com.inndata21.tienda21.entity.productos;
 
@@ -21,7 +22,7 @@ public interface IProducto {
     //metodos personalizados con dto
     public List<ProductosResponse> productosBaratos(Double Precio);
     public List<ProductosResponse> productosProveedorStock(Integer proveedorId, Integer stock);
-    
+    public ProductosResponse createProductoDto(ProductosRequest productoRequest);
     //metodo con queries
     public List<productos> productosBaratosQuery(Double Precio);
 }
